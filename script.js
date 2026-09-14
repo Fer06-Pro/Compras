@@ -4,7 +4,11 @@
 
 class ListaComprasColaborativa {
   constructor() {
+<<<<<<< HEAD
     this.produtosKey = "lista_compras_produtos";
+=======
+    this.produtosKey = 'lista_compras_produtos';
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
     this.init();
   }
 
@@ -12,9 +16,15 @@ class ListaComprasColaborativa {
     this.carregarProdutos();
     this.renderizarCards();
     this.adicionarEventListeners();
+<<<<<<< HEAD
 
     // Sincronizar com abas abertas
     window.addEventListener("storage", () => {
+=======
+    
+    // Sincronizar com abas abertas
+    window.addEventListener('storage', () => {
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
       this.carregarProdutos();
       this.renderizarCards();
     });
@@ -33,6 +43,7 @@ class ListaComprasColaborativa {
   }
 
   inicializarProdutos() {
+<<<<<<< HEAD
     const cards = document.querySelectorAll(".card-produto");
     const produtos = {};
 
@@ -41,6 +52,15 @@ class ListaComprasColaborativa {
       const nome = card.querySelector("h2").textContent;
       const quantidadeTexto =
         card.querySelector(".quantidade strong").textContent;
+=======
+    const cards = document.querySelectorAll('.card-produto');
+    const produtos = {};
+
+    cards.forEach((card, index) => {
+      const numero = card.querySelector('.numero').textContent;
+      const nome = card.querySelector('h2').textContent;
+      const quantidadeTexto = card.querySelector('.quantidade strong').textContent;
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
       const quantidadeOriginal = parseInt(quantidadeTexto);
 
       produtos[numero] = {
@@ -49,7 +69,11 @@ class ListaComprasColaborativa {
         quantidadeOriginal,
         quantidade: quantidadeOriginal,
         pegou: false,
+<<<<<<< HEAD
         usuario: null,
+=======
+        usuario: null
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
       };
     });
 
@@ -66,6 +90,7 @@ class ListaComprasColaborativa {
   }
 
   adicionarEventListeners() {
+<<<<<<< HEAD
     const cards = document.querySelectorAll(".card-produto");
 
     cards.forEach((card) => {
@@ -81,10 +106,28 @@ class ListaComprasColaborativa {
       }
 
       btnAdicionar.addEventListener("click", () => {
+=======
+    const cards = document.querySelectorAll('.card-produto');
+
+    cards.forEach((card) => {
+      const numero = card.querySelector('.numero').textContent;
+
+      // Botão de adicionar
+      let btnAdicionar = card.querySelector('.btn-adicionar');
+      if (!btnAdicionar) {
+        btnAdicionar = document.createElement('button');
+        btnAdicionar.className = 'btn-adicionar';
+        btnAdicionar.textContent = '+';
+        card.appendChild(btnAdicionar);
+      }
+
+      btnAdicionar.addEventListener('click', () => {
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
         this.adicionarProduto(numero);
       });
 
       // Botão de remover
+<<<<<<< HEAD
       let btnRemover = card.querySelector(".btn-remover");
       if (!btnRemover) {
         btnRemover = document.createElement("button");
@@ -94,6 +137,17 @@ class ListaComprasColaborativa {
       }
 
       btnRemover.addEventListener("click", () => {
+=======
+      let btnRemover = card.querySelector('.btn-remover');
+      if (!btnRemover) {
+        btnRemover = document.createElement('button');
+        btnRemover.className = 'btn-remover';
+        btnRemover.textContent = '−';
+        card.appendChild(btnRemover);
+      }
+
+      btnRemover.addEventListener('click', () => {
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
         this.removerProduto(numero);
       });
     });
@@ -137,32 +191,55 @@ class ListaComprasColaborativa {
 
   renderizarCards() {
     const produtos = this.getProdutos();
+<<<<<<< HEAD
     const cards = document.querySelectorAll(".card-produto");
 
     cards.forEach((card) => {
       const numero = card.querySelector(".numero").textContent;
+=======
+    const cards = document.querySelectorAll('.card-produto');
+
+    cards.forEach((card) => {
+      const numero = card.querySelector('.numero').textContent;
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
       const produto = produtos[numero];
 
       if (!produto) return;
 
       // Remover classe anterior
+<<<<<<< HEAD
       card.classList.remove("pegando", "completo");
 
       const btnAdicionar = card.querySelector(".btn-adicionar");
       const btnRemover = card.querySelector(".btn-remover");
       const quantidadeSpan = card.querySelector(".quantidade strong");
+=======
+      card.classList.remove('pegando', 'completo');
+
+      const btnAdicionar = card.querySelector('.btn-adicionar');
+      const btnRemover = card.querySelector('.btn-remover');
+      const quantidadeSpan = card.querySelector('.quantidade strong');
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
 
       // Atualizar quantidade exibida
       quantidadeSpan.textContent = `${produto.quantidade} un`;
 
       if (produto.quantidade === 0 && produto.pegou) {
         // Produto completamente pego
+<<<<<<< HEAD
         card.classList.add("completo");
+=======
+        card.classList.add('completo');
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
         btnAdicionar.disabled = true;
         btnRemover.disabled = false;
       } else if (produto.quantidade < produto.quantidadeOriginal) {
         // Produto sendo pegado
+<<<<<<< HEAD
         card.classList.add("pegando");
+=======
+        card.classList.add('pegando');
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
         btnAdicionar.disabled = false;
         btnRemover.disabled = false;
       } else {
@@ -174,16 +251,27 @@ class ListaComprasColaborativa {
   }
 
   gerarIDUsuario() {
+<<<<<<< HEAD
     let usuarioID = sessionStorage.getItem("usuario_id");
     if (!usuarioID) {
       usuarioID = "user_" + Math.random().toString(36).substr(2, 9);
       sessionStorage.setItem("usuario_id", usuarioID);
+=======
+    let usuarioID = sessionStorage.getItem('usuario_id');
+    if (!usuarioID) {
+      usuarioID = 'user_' + Math.random().toString(36).substr(2, 9);
+      sessionStorage.setItem('usuario_id', usuarioID);
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
     }
     return usuarioID;
   }
 
   limparTudo() {
+<<<<<<< HEAD
     if (confirm("Deseja resetar a lista de compras?")) {
+=======
+    if (confirm('Deseja resetar a lista de compras?')) {
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
       localStorage.removeItem(this.produtosKey);
       this.inicializarProdutos();
       this.renderizarCards();
@@ -192,6 +280,7 @@ class ListaComprasColaborativa {
 }
 
 // Inicializar quando o DOM estiver pronto
+<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
   const lista = new ListaComprasColaborativa();
 
@@ -202,6 +291,18 @@ document.addEventListener("DOMContentLoaded", () => {
     btnReset.textContent = "Resetar Lista";
     btnReset.className = "btn-reset-lista";
     btnReset.addEventListener("click", () => lista.limparTudo());
+=======
+document.addEventListener('DOMContentLoaded', () => {
+  const lista = new ListaComprasColaborativa();
+
+  // Adicionar botão de reset no rodapé (opcional)
+  const rodape = document.querySelector('.rodape');
+  if (rodape) {
+    const btnReset = document.createElement('button');
+    btnReset.textContent = 'Resetar Lista';
+    btnReset.className = 'btn-reset-lista';
+    btnReset.addEventListener('click', () => lista.limparTudo());
+>>>>>>> 37632bbbdc88612f3a1fe8757e57c0f231884af2
     rodape.appendChild(btnReset);
   }
 });
