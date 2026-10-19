@@ -16,3 +16,14 @@ button,input,summary{font:inherit}button{cursor:pointer}button:disabled{cursor:n
 @media(max-width:360px){.identidade-legenda{display:none}.identidade-topo{font-size:10px}.topo-linha{gap:5px}.cabecalho-pagina .sobretitulo{font-size:9px}.intro-pagina h1{font-size:30px}.painel-baixo{flex-direction:column;gap:1px}.cartao-produto{grid-template-columns:96px minmax(0,1fr)}.cartao-corpo{padding:11px}.botao-filtro span{font-size:10px;min-width:16px;padding:1px 2px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
 @media print{body,:root[data-tema="claro"] body{color:#111!important;background:#fff!important}.decoracao-fundo,.topo-site,.selo-mes,.botao-compartilhar,.ferramentas,.categorias,.legenda-salvo,.acoes-card,.marcar-tudo,.voltar-topo,.rodape,.mensagem{display:none!important}.limite{width:100%}.cabecalho-pagina{padding:10px 0}.intro-pagina h1{font-size:25px}.intro-pagina p{display:none}.intro-pagina h1 span{color:#111!important}.painel{padding:12px;color:#111!important;background:#fff!important;box-shadow:none;border:1px solid #ddd}.painel *{color:#111!important}.secao-lista{padding:15px 0}.cartao-produto{border:1px solid #bbb!important;box-shadow:none!important;break-inside:avoid;background:white!important;color:#111!important}.cartao-corpo{min-height:unset}.cartao-imagem{height:90px;flex-basis:90px}.cartao-imagem img{padding:4px}.grade-produtos{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.cartao-corpo h3{color:#111}.tipo-produto,.observacao,.comprados-linha,.contador-card{color:#333!important}}
+
+/* Filtro pela origem e etiquetas discretas para distinguir os 2 conjuntos */
+.origens{display:flex;gap:9px;flex-wrap:wrap;margin:11px 0 6px}
+.botao-origem{border:1px solid var(--borda-forte);border-radius:30px;background:var(--chip);color:var(--texto);min-height:38px;display:flex;align-items:center;justify-content:center;gap:7px;padding:7px 13px;font-size:12px;font-weight:750;white-space:nowrap}
+.botao-origem.ativo{background:var(--acento);border-color:var(--acento);color:var(--acento-contraste)}
+.botao-origem span{border-radius:7px;background:rgba(145,186,243,.16);padding:1px 5px;font-size:11px}
+.origem-etiqueta{display:inline-flex;align-items:center;vertical-align:middle;margin:0 0 0 6px;padding:2px 6px;border-radius:5px;font-size:9px;letter-spacing:0;text-transform:none;background:var(--chip);color:var(--texto-suave);font-weight:720}
+.origem-etiqueta.origem-antiga{background:rgba(90,198,255,.16);color:var(--acento)}
+@media(max-width:640px){.origens{gap:6px}.botao-origem{flex:1 1 auto;min-height:38px;padding:6px 9px;font-size:11px}.origem-etiqueta{margin-left:0;margin-top:3px}.tipo-produto{display:flex;flex-wrap:wrap;align-items:center;gap:2px 5px}}
+@media(max-width:360px){.botao-origem{font-size:10px;padding:6px}.botao-origem span{font-size:9px;padding:1px 3px}}
+@media print{.origens{display:none!important}}
