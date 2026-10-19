@@ -2,6 +2,7 @@
 <html lang="pt-BR" data-tema="escuro">
   <head>
     <meta charset="utf-8" />
+    <meta name="referrer" content="same-origin" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -100,10 +101,7 @@
     <main class="limite">
       <section class="cabecalho-pagina" aria-labelledby="titulo-lista">
         <div class="intro-pagina">
-          <span class="sobretitulo"
-            ></span>OUTUBRO DE 2026 <span class="separador">/</span> LISTA
-            UNIFICADA</span
-          >
+          <span class="sobretitulo">OUTUBRO DE 2026 <span class="separador">/</span> LISTA UNIFICADA</span>
         </div>
         <div class="selo-mes">
           <span aria-hidden="true">✦</span> Minha lista do mês
@@ -173,9 +171,10 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               aria-hidden="true"
-            ></svg>
+            >
               <path d="M8 12h11M15 8l4 4-4 4" />
-              <path d="M5 5H3v14h2" /></svg>
+              <path d="M5 5H3v14h2" />
+            </svg>
             <span>Compartilhar pendentes</span>
           </button>
         </div>
@@ -189,8 +188,9 @@
               stroke-linecap="round"
               aria-hidden="true"
             >
-              <circle cx="11" cy="11" r="7">
-              <path d="m16 16 5 5"></svg>
+              <circle cx="11" cy="11" r="7" />
+              <path d="m16 16 5 5" />
+            </svg>
             <label class="sr-only" for="busca-produto">Buscar produto</label
             ><input
               id="busca-produto"
@@ -283,5 +283,7 @@
         É necessário ativar o JavaScript para interagir com a lista.
       </div></noscript
     >
+    <!-- Sincronização em tempo real. Não substitui o script.js. -->
+    <script type="module" src="sync.js"></script>
   </body>
 </html>
