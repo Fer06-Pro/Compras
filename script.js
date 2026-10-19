@@ -2,7 +2,17 @@
 (() => {
   "use strict";
   const produtos = Array.isArray(window.PRODUTOS_OUTUBRO_2026)
-    ? window.PRODUTOS_OUTUBRO_2026
+    ? window.PRODUTOS_OUTUBRO_2026.map((produto) => {
+        const quantidade = Number(produto.quantidade);
+        return {
+          ...produto,
+          // Dois hortifrutis não têm quantidade definida no catálogo.
+          // Contamos uma seleção por item, sem alterar o catalogo.js.
+          quantidade: Number.isFinite(quantidade) && quantidade > 0
+            ? Math.ceil(quantidade)
+            : 1,
+        };
+      })
     : [];
   const CHAVE_COMPRAS = "mercado:compras:2026-10:v1";
   const CHAVE_TEMA = "mercado:tema";
@@ -58,6 +68,20 @@
       JSON.stringify({ versao: 1, mes: "2026-10", compras }),
     );
   }
+  // Ponte simples com o módulo Firebase: o site continua funcionando offline.
+  // A sincronização envia só os produtos que realmente mudaram.
+  function avisarNuvem(mudancas) {
+    window.dispatchEvent(
+      new CustomEvent("mercado:alteracao", { detail: { mudancas } }),
+    );
+  }
+  window.mercadoObterCompras = () => ({ ...compras });
+  window.addEventListener("mercado:remoto", (evento) => {
+    if (!evento.detail || !evento.detail.compras) return;
+    compras = normalizarImportacao(evento.detail.compras);
+    salvarCompras(); // atualiza também o backup local, sem reenviar ao Firebase
+    renderizar();
+  });
   function normalizarTexto(str) {
     return String(str)
       .normalize("NFD")
@@ -240,6 +264,7 @@
     if (proximo === atual) return;
     compras[id] = proximo;
     if (!salvarCompras()) aviso("Não foi possível salvar no navegador.");
+    avisarNuvem({ [id]: proximo });
     renderizar();
   }
   function configurarTema() {
@@ -339,6 +364,7 @@
         return;
       compras = normalizarImportacao(dados.compras);
       salvarCompras();
+      avisarNuvem({ ...compras });
       renderizar();
       aviso("Progresso importado com sucesso.");
     } catch (err) {
@@ -450,6 +476,7 @@
         return;
       compras = normalizarImportacao({});
       salvarCompras();
+      avisarNuvem({ ...compras });
       renderizar();
       aviso("Lista reiniciada.");
     });
