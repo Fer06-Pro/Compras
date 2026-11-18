@@ -8,9 +8,10 @@
           ...produto,
           // Dois hortifrutis não têm quantidade definida no catálogo.
           // Contamos uma seleção por item, sem alterar o catalogo.js.
-          quantidade: Number.isFinite(quantidade) && quantidade > 0
-            ? Math.ceil(quantidade)
-            : 1,
+          quantidade:
+            Number.isFinite(quantidade) && quantidade > 0
+              ? Math.ceil(quantidade)
+              : 1,
         };
       })
     : [];
